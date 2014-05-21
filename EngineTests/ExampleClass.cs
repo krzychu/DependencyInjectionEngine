@@ -1,0 +1,6 @@
+﻿namespace EngineTests
+{
+    class ExampleClass
+    {
+    }
+}
