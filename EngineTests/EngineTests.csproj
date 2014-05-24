@@ -52,9 +52,9 @@
   <ItemGroup>
     <Compile Include="ExampleClass.cs" />
     <Compile Include="SimpleContainerTest.cs" />
-    <Compile Include="SingletonLifetimePolicyTest.cs" />
-    <Compile Include="SpecifiedInstanceLifetimePolicyTest.cs" />
-    <Compile Include="TransientLifetimePolicyTest.cs" />
+    <Compile Include="LifetimePolicy\SingletonLifetimePolicyTest.cs" />
+    <Compile Include="LifetimePolicy\SpecifiedInstanceLifetimePolicyTest.cs" />
+    <Compile Include="LifetimePolicy\TransientLifetimePolicyTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

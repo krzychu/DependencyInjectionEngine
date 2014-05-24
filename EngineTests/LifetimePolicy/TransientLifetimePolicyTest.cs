@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Engine;
+using Engine.LifetimePolicy;
 
 namespace EngineTests
 {

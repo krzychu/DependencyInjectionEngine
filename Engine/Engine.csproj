@@ -39,14 +39,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SpecifiedInstanceLifetimePolicy.cs" />
-    <Compile Include="ILifetimePolicy.cs" />
+    <Compile Include="ConstructorInjection\AttributeConstructorResolver.cs" />
+    <Compile Include="ConstructorInjection\DependencyConstructorAttribute.cs" />
+    <Compile Include="ConstructorInjection\DependencyConstructorException.cs" />
+    <Compile Include="ConstructorInjection\AbstractConstructorResolver.cs" />
+    <Compile Include="ConstructorInjection\LongestConstructorResolver.cs" />
+    <Compile Include="LifetimePolicy\SpecifiedInstanceLifetimePolicy.cs" />
+    <Compile Include="LifetimePolicy\ILifetimePolicy.cs" />
     <Compile Include="UnregisteredTypeException.cs" />
     <Compile Include="SimpleContainer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="LifetimePolicyBase.cs" />
-    <Compile Include="TransientLifetimePolicy.cs" />
-    <Compile Include="SingletonLifetimePolicy.cs" />
+    <Compile Include="LifetimePolicy\LifetimePolicyBase.cs" />
+    <Compile Include="LifetimePolicy\TransientLifetimePolicy.cs" />
+    <Compile Include="LifetimePolicy\SingletonLifetimePolicy.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
