@@ -37,6 +37,11 @@ namespace Engine
             _policies[abstractType] = _policies[concreteType];
         }
 
+        public void RegisterInstance<T>(T instance)
+        {
+            _policies[typeof(T)] = new SpecifiedInstanceLifetimePolicy(instance);            
+        }
+
         public T Resolve<T>()
             where T : class
         {

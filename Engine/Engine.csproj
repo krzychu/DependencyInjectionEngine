@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SpecifiedInstanceLifetimePolicy.cs" />
     <Compile Include="ILifetimePolicy.cs" />
     <Compile Include="UnregisteredTypeException.cs" />
     <Compile Include="SimpleContainer.cs" />
