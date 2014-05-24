@@ -44,6 +44,8 @@
     <Compile Include="ConstructorInjection\DependencyConstructorException.cs" />
     <Compile Include="ConstructorInjection\AbstractConstructorResolver.cs" />
     <Compile Include="ConstructorInjection\LongestConstructorResolver.cs" />
+    <Compile Include="CycleDetector.cs" />
+    <Compile Include="CyclicDependencyException.cs" />
     <Compile Include="IContainer.cs" />
     <Compile Include="LifetimePolicy\SpecifiedInstanceLifetimePolicy.cs" />
     <Compile Include="LifetimePolicy\ILifetimePolicy.cs" />

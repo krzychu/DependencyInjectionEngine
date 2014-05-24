@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="ConstructorInjection\AttributeConstructorResolverTest.cs" />
     <Compile Include="ConstructorInjection\LongestConstructorResolverTest.cs" />
+    <Compile Include="CycleDetectorTest.cs" />
     <Compile Include="ExampleClass.cs" />
     <Compile Include="SimpleContainerTest.cs" />
     <Compile Include="LifetimePolicy\SingletonLifetimePolicyTest.cs" />

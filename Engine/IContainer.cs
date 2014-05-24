@@ -23,5 +23,7 @@ namespace Engine
         object Resolve(Type type);
 
         ConstructorInfo GetCorrectConstructor(Type type);
+
+        IEnumerable<Type> GetDependencies(Type type);
     }
 }

@@ -19,6 +19,7 @@ namespace Engine.LifetimePolicy
         {
             Type = createdType;
             _constructor = container.GetCorrectConstructor(createdType);
+            Dependencies = _constructor.GetParameters().Select(x => x.ParameterType).ToArray();
             _container = container;
         }
 

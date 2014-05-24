@@ -79,6 +79,8 @@ namespace Engine
             if (!_resolvers.ContainsKey(type))
                 throw new UnregisteredTypeException(type);
 
+            CycleDetector.CheckForCycles(type, this);
+
             return _resolvers[type].Resolve();
         }
     }
