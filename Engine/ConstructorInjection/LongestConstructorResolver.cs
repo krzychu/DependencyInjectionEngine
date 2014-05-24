@@ -9,8 +9,8 @@ namespace Engine.ConstructorInjection
 {
     public class LongestConstructorResolver : AbstractConstructorResolver
     {
-        public LongestConstructorResolver(AbstractConstructorResolver next)
-            : base(next)
+        public LongestConstructorResolver()
+            : base(null)
         {
         }
 

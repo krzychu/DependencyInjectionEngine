@@ -8,6 +8,16 @@ using System.Threading.Tasks;
 
 namespace EngineTests
 {
+    interface IInterface
+    {
+        
+    }
+
+    class Implementation : IInterface
+    {
+        
+    }
+
     [TestClass]
     public class SimpleContainerTest
     {
@@ -38,10 +48,10 @@ namespace EngineTests
         [TestMethod]
         public void CreatesInstancesOfConcreteTypesWhenAskedForAbstractTypes()
         {
-            container.RegisterType<IEnumerable<string>, List<string>>(false);
-            var enumerable = container.Resolve<IEnumerable<string>>();
+            container.RegisterType<IInterface, Implementation>(false);
+            var enumerable = container.Resolve<IInterface>();
             Assert.IsNotNull(enumerable);
-            Assert.IsTrue(enumerable is List<string>);
+            Assert.IsTrue(enumerable is Implementation);
         }
     }
 }

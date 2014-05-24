@@ -29,7 +29,7 @@ namespace EngineTests.ConstructorInjection
         [TestMethod]
         public void ReturnsConstructorWithMostArguments()
         {
-            var resolver = new LongestConstructorResolver(null);
+            var resolver = new LongestConstructorResolver();
             var constructor = resolver.GetConstructor(typeof(SeveralConstructors));
             Assert.AreEqual(2, constructor.GetParameters().Length);
         }

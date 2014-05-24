@@ -17,7 +17,7 @@ namespace Engine
 
         public SimpleContainer()
         {
-            _constructorResolver = null;
+            _constructorResolver = new AttributeConstructorResolver(new LongestConstructorResolver());
         }
 
         public ConstructorInfo GetCorrectConstructor(Type type)
