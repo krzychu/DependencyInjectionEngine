@@ -9,5 +9,7 @@ namespace Engine.LifetimePolicy
     public interface ILifetimePolicy
     {
         object GetInstance();
+
+        IEnumerable<Type> Dependencies { get; }
     }
 }

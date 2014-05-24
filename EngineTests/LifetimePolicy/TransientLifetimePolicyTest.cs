@@ -11,7 +11,9 @@ namespace EngineTests
         [TestMethod]
         public void CreatesNewInstanceEachTime()
         {
-            var policy = new TransientLifetimePolicy(typeof(ExampleClass));
+            var container = new SimpleContainer();
+
+            var policy = new TransientLifetimePolicy(typeof(ExampleClass), container);
             var instance1 = policy.GetInstance();
             var instance2 = policy.GetInstance();
 

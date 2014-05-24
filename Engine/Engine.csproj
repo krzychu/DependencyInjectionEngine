@@ -46,8 +46,8 @@
     <Compile Include="ConstructorInjection\LongestConstructorResolver.cs" />
     <Compile Include="LifetimePolicy\SpecifiedInstanceLifetimePolicy.cs" />
     <Compile Include="LifetimePolicy\ILifetimePolicy.cs" />
-    <Compile Include="TypeResolution\DirectTypeResolver.cs" />
-    <Compile Include="TypeResolution\IndirectTypeResolver.cs" />
+    <Compile Include="TypeResolution\ConcreteTypeResolver.cs" />
+    <Compile Include="TypeResolution\AbstractTypeResolver.cs" />
     <Compile Include="TypeResolution\ITypeResolver.cs" />
     <Compile Include="UnregisteredTypeException.cs" />
     <Compile Include="SimpleContainer.cs" />

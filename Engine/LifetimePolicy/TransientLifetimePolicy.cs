@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Engine.ConstructorInjection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,14 +9,14 @@ namespace Engine.LifetimePolicy
 {
     public class TransientLifetimePolicy : LifetimePolicyBase
     {
-        public TransientLifetimePolicy(Type type)
-            : base(type)
+        public TransientLifetimePolicy(Type type, SimpleContainer container)
+            : base(type, container)
         {
         }
 
         public override object GetInstance()
         {
-            return Activator.CreateInstance(Type);
+            return CreateInstance();
         }
     }
 }

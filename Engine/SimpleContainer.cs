@@ -1,4 +1,5 @@
-﻿using Engine.LifetimePolicy;
+﻿using Engine.ConstructorInjection;
+using Engine.LifetimePolicy;
 using Engine.TypeResolution;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,13 @@ namespace Engine
     {
         private Dictionary<Type, ITypeResolver> _resolvers = new Dictionary<Type, ITypeResolver>();
 
+        public AbstractConstructorResolver ConstructorResolver { get; private set; }
+
+        public SimpleContainer()
+        {
+            ConstructorResolver = null;
+        }
+
         public void RegisterType<T>(bool singleton) 
             where T : class
         {
@@ -23,11 +31,11 @@ namespace Engine
         {
             ILifetimePolicy policy = null;
             if (singleton)
-                policy = new SingletonLifetimePolicy(type);
+                policy = new SingletonLifetimePolicy(type, this);
             else
-                policy = new TransientLifetimePolicy(type);
+                policy = new TransientLifetimePolicy(type, this);
 
-            _resolvers[type] = new DirectTypeResolver(policy);
+            _resolvers[type] = new ConcreteTypeResolver(policy);
         }
 
         public void RegisterType<Abstract, Concrete>(bool singleton) 
@@ -39,12 +47,12 @@ namespace Engine
             if (!_resolvers.ContainsKey(concreteType))
                 RegisterType(singleton, concreteType);
 
-            _resolvers[abstractType] = new IndirectTypeResolver(concreteType, this);
+            _resolvers[abstractType] = new AbstractTypeResolver(concreteType, this);
         }
 
         public void RegisterInstance<T>(T instance)
         {
-            _resolvers[typeof(T)] = new DirectTypeResolver(new SpecifiedInstanceLifetimePolicy(instance));            
+            _resolvers[typeof(T)] = new ConcreteTypeResolver(new SpecifiedInstanceLifetimePolicy(instance));            
         }
 
         public T Resolve<T>()

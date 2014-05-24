@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Engine.ConstructorInjection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,15 +11,15 @@ namespace Engine.LifetimePolicy
     {
         private object _instance;
 
-        public SingletonLifetimePolicy(Type type)
-            : base(type)
+        public SingletonLifetimePolicy(Type type, SimpleContainer container)
+            : base(type, container)
         {
         }
 
         public override object GetInstance()
         {
             if (_instance == null)
-                _instance = Activator.CreateInstance(Type);
+                _instance = CreateInstance();
 
             return _instance;
         }

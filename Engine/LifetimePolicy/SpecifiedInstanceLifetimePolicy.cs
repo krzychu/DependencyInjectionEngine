@@ -22,5 +22,10 @@ namespace Engine.LifetimePolicy
         {
             return _instance;
         }
+
+        public IEnumerable<Type> Dependencies
+        {
+            get { return Enumerable.Empty<Type>(); }
+        }
     }
 }

@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Engine.TypeResolution
 {
-    public class DirectTypeResolver : ITypeResolver
+    public class ConcreteTypeResolver : ITypeResolver
     {
         private ILifetimePolicy _policy;
 
-        public DirectTypeResolver(ILifetimePolicy policy)
+        public ConcreteTypeResolver(ILifetimePolicy policy)
         {
             _policy = policy;
         }
@@ -19,6 +19,11 @@ namespace Engine.TypeResolution
         public object Resolve()
         {
             return _policy.GetInstance();
+        }
+
+        public IEnumerable<Type> Dependencies
+        {
+            get { return _policy.Dependencies; }
         }
     }
 }

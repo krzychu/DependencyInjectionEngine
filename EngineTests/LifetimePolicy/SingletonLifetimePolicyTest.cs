@@ -15,7 +15,8 @@ namespace EngineTests
         [TestMethod]
         public void TheSameInstanceIsReturnedEachTime()
         {
-            var policy = new SingletonLifetimePolicy(typeof(ExampleClass));
+            var container = new SimpleContainer();
+            var policy = new SingletonLifetimePolicy(typeof(ExampleClass), container);
             var instance1 = policy.GetInstance();
             var instance2 = policy.GetInstance();
 

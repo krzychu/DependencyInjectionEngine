@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace Engine.TypeResolution
 {
-    public class IndirectTypeResolver : ITypeResolver
+    public class AbstractTypeResolver : ITypeResolver
     {
         private Type _type;
         private SimpleContainer _container;
 
-        public IndirectTypeResolver(Type type, SimpleContainer container)
+        public AbstractTypeResolver(Type type, SimpleContainer container)
         {
             _type = type;
+            Dependencies = new[] { type };
             _container = container;
         }
 
@@ -21,5 +22,7 @@ namespace Engine.TypeResolution
         {
             return _container.Resolve(_type);
         }
+
+        public IEnumerable<Type> Dependencies { get; private set; }
     }
 }

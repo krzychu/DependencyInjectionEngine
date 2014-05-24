@@ -9,5 +9,7 @@ namespace Engine.TypeResolution
     public interface ITypeResolver
     {
         object Resolve();
+
+        IEnumerable<Type> Dependencies { get; }
     }
 }
