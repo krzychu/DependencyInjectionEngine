@@ -11,7 +11,7 @@ namespace Engine.LifetimePolicy
     {
         private object _instance;
 
-        public SingletonLifetimePolicy(Type type, SimpleContainer container)
+        public SingletonLifetimePolicy(Type type, IContainer container)
             : base(type, container)
         {
         }

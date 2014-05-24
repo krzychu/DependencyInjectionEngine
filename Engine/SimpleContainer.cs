@@ -4,20 +4,33 @@ using Engine.TypeResolution;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Engine
 {
-    public class SimpleContainer
+    public class SimpleContainer : IContainer
     {
         private Dictionary<Type, ITypeResolver> _resolvers = new Dictionary<Type, ITypeResolver>();
-
-        public AbstractConstructorResolver ConstructorResolver { get; private set; }
+        private AbstractConstructorResolver _constructorResolver;
 
         public SimpleContainer()
         {
-            ConstructorResolver = null;
+            _constructorResolver = null;
+        }
+
+        public ConstructorInfo GetCorrectConstructor(Type type)
+        {
+            return _constructorResolver.GetConstructor(type);
+        }
+
+        public IEnumerable<Type> GetDependencies(Type type)
+        {
+            if (!_resolvers.ContainsKey(type))
+                throw new UnregisteredTypeException(type);
+
+            return _resolvers[type].Dependencies;
         }
 
         public void RegisterType<T>(bool singleton) 

@@ -11,14 +11,14 @@ namespace Engine.LifetimePolicy
     public abstract class LifetimePolicyBase : ILifetimePolicy
     {
         private ConstructorInfo _constructor;
-        private SimpleContainer _container;
+        private IContainer _container;
 
         protected Type Type { get; private set; }
 
-        public LifetimePolicyBase(Type createdType, SimpleContainer container)
+        public LifetimePolicyBase(Type createdType, IContainer container)
         {
             Type = createdType;
-            _constructor = container.ConstructorResolver.GetConstructor(createdType);
+            _constructor = container.GetCorrectConstructor(createdType);
             _container = container;
         }
 

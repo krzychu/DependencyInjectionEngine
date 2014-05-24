@@ -9,12 +9,12 @@ namespace Engine.TypeResolution
     public class AbstractTypeResolver : ITypeResolver
     {
         private Type _type;
-        private SimpleContainer _container;
+        private IContainer _container;
 
-        public AbstractTypeResolver(Type type, SimpleContainer container)
+        public AbstractTypeResolver(Type concreteType, IContainer container)
         {
-            _type = type;
-            Dependencies = new[] { type };
+            _type = concreteType;
+            Dependencies = new[] { concreteType };
             _container = container;
         }
 

@@ -18,7 +18,7 @@ namespace Engine.ConstructorInjection
         {
             var constructorsWithAttribute = type
                 .GetConstructors()
-                .Where(x => x.CustomAttributes.OfType<DependencyConstructorAttribute>().Any())
+                .Where(x => x.GetCustomAttributes<DependencyConstructorAttribute>().Any())
                 .ToArray();
 
             if (constructorsWithAttribute.Length > 1)

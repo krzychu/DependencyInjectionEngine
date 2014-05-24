@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Engine.ConstructorInjection
 {
     [AttributeUsage(AttributeTargets.Constructor, Inherited = false, AllowMultiple = false)]
-    sealed class DependencyConstructorAttribute : Attribute
+    public sealed class DependencyConstructorAttribute : Attribute
     {
     }
 }
