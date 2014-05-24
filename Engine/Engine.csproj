@@ -46,6 +46,9 @@
     <Compile Include="ConstructorInjection\LongestConstructorResolver.cs" />
     <Compile Include="LifetimePolicy\SpecifiedInstanceLifetimePolicy.cs" />
     <Compile Include="LifetimePolicy\ILifetimePolicy.cs" />
+    <Compile Include="TypeResolution\DirectTypeResolver.cs" />
+    <Compile Include="TypeResolution\IndirectTypeResolver.cs" />
+    <Compile Include="TypeResolution\ITypeResolver.cs" />
     <Compile Include="UnregisteredTypeException.cs" />
     <Compile Include="SimpleContainer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -53,6 +56,7 @@
     <Compile Include="LifetimePolicy\TransientLifetimePolicy.cs" />
     <Compile Include="LifetimePolicy\SingletonLifetimePolicy.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

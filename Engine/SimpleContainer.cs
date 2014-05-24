@@ -1,4 +1,5 @@
 ﻿using Engine.LifetimePolicy;
+using Engine.TypeResolution;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace Engine
 {
     public class SimpleContainer
     {
-        private Dictionary<Type, ILifetimePolicy> _policies = new Dictionary<Type, ILifetimePolicy>();
+        private Dictionary<Type, ITypeResolver> _resolvers = new Dictionary<Type, ITypeResolver>();
 
         public void RegisterType<T>(bool singleton) 
             where T : class
@@ -20,10 +21,13 @@ namespace Engine
 
         private void RegisterType(bool singleton, Type type)
         {
+            ILifetimePolicy policy = null;
             if (singleton)
-                _policies[type] = new SingletonLifetimePolicy(type);
+                policy = new SingletonLifetimePolicy(type);
             else
-                _policies[type] = new TransientLifetimePolicy(type);
+                policy = new TransientLifetimePolicy(type);
+
+            _resolvers[type] = new DirectTypeResolver(policy);
         }
 
         public void RegisterType<Abstract, Concrete>(bool singleton) 
@@ -32,25 +36,29 @@ namespace Engine
             var concreteType = typeof(Concrete);
             var abstractType = typeof(Abstract);
 
-            if (!_policies.ContainsKey(concreteType))
+            if (!_resolvers.ContainsKey(concreteType))
                 RegisterType(singleton, concreteType);
 
-            _policies[abstractType] = _policies[concreteType];
+            _resolvers[abstractType] = new IndirectTypeResolver(concreteType, this);
         }
 
         public void RegisterInstance<T>(T instance)
         {
-            _policies[typeof(T)] = new SpecifiedInstanceLifetimePolicy(instance);            
+            _resolvers[typeof(T)] = new DirectTypeResolver(new SpecifiedInstanceLifetimePolicy(instance));            
         }
 
         public T Resolve<T>()
             where T : class
         {
-            var type = typeof(T);
-            if (!_policies.ContainsKey(type))
+            return (T)Resolve(typeof(T));
+        }
+
+        public object Resolve(Type type)
+        {
+            if (!_resolvers.ContainsKey(type))
                 throw new UnregisteredTypeException(type);
 
-            return (T)_policies[type].GetInstance();
+            return _resolvers[type].Resolve();
         }
     }
 }
